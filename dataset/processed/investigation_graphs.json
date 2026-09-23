@@ -21,47 +21,10 @@
       "\u2713 Low-and-slow profile: average 10.0 attempts/IP successfully evades standard single-IP threshold alarms"
     ],
     "timeline": {
-      "started": "08:54",
-      "peak": "10:30",
-      "duration": "4h 04m",
-      "hourly_series": [
-        {
-          "time": "08:30",
-          "attempts": 30
-        },
-        {
-          "time": "09:00",
-          "attempts": 603
-        },
-        {
-          "time": "09:30",
-          "attempts": 1211
-        },
-        {
-          "time": "10:00",
-          "attempts": 1471
-        },
-        {
-          "time": "10:30",
-          "attempts": 1573
-        },
-        {
-          "time": "11:00",
-          "attempts": 1520
-        },
-        {
-          "time": "11:30",
-          "attempts": 1125
-        },
-        {
-          "time": "12:00",
-          "attempts": 389
-        },
-        {
-          "time": "12:30",
-          "attempts": 57
-        }
-      ]
+      "started": "N/A",
+      "peak": "N/A",
+      "duration": "N/A",
+      "hourly_series": []
     },
     "graph": {
       "nodes": [
@@ -859,39 +822,10 @@
       "\u2713 Low-and-slow profile: average 7.2 attempts/IP successfully evades standard single-IP threshold alarms"
     ],
     "timeline": {
-      "started": "09:48",
-      "peak": "11:00",
-      "duration": "2h 52m",
-      "hourly_series": [
-        {
-          "time": "09:30",
-          "attempts": 41
-        },
-        {
-          "time": "10:00",
-          "attempts": 305
-        },
-        {
-          "time": "10:30",
-          "attempts": 443
-        },
-        {
-          "time": "11:00",
-          "attempts": 460
-        },
-        {
-          "time": "11:30",
-          "attempts": 413
-        },
-        {
-          "time": "12:00",
-          "attempts": 126
-        },
-        {
-          "time": "12:30",
-          "attempts": 6
-        }
-      ]
+      "started": "N/A",
+      "peak": "N/A",
+      "duration": "N/A",
+      "hourly_series": []
     },
     "graph": {
       "nodes": [

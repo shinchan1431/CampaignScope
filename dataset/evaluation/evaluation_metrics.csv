@@ -1,0 +1,2 @@
+true_positive_ips,false_positive_ips,false_negative_ips,precision,recall,f1_score
+1050,66,0,0.9408602150537635,1.0,0.9695290858725762
