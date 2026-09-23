@@ -1,0 +1,77 @@
+[
+  {
+    "campaign_id": "CAMPAIGN_02",
+    "risk_score": 93.1,
+    "classification": "CREDENTIAL_STUFFING",
+    "ip_count": 800,
+    "total_events": 7979,
+    "unique_target_accounts": 400,
+    "avg_attempts_per_ip": 9.97,
+    "account_overlap_pct": 99.7,
+    "timing_similarity_pct": 69.6,
+    "ua_similarity_pct": 100.0,
+    "endpoint_similarity_pct": 100.0,
+    "failure_behavior_pct": 96.3,
+    "reasons": [
+      "\u2713 800 distributed IPs systematically target 400 accounts (99.7% target reuse)",
+      "\u2713 96.3% authentication failure rate across 7,979 total attempts",
+      "\u2713 69.6% timing regularity indicating automated pacing / bot scheduling",
+      "\u2713 100.0% client signature uniformity using canonical 'Chrome-120'",
+      "\u2713 100.0% endpoint focus targeting '/api/v1/auth/login'",
+      "\u2713 Low-and-slow profile: average 10.0 attempts/IP successfully evades standard single-IP threshold alarms"
+    ],
+    "primary_user_agent": "Chrome-120",
+    "primary_endpoint": "/api/v1/auth/login",
+    "top_origin_countries": "RU, DE, CN"
+  },
+  {
+    "campaign_id": "CAMPAIGN_01",
+    "risk_score": 81.8,
+    "classification": "CREDENTIAL_STUFFING",
+    "ip_count": 250,
+    "total_events": 1794,
+    "unique_target_accounts": 147,
+    "avg_attempts_per_ip": 7.18,
+    "account_overlap_pct": 61.0,
+    "timing_similarity_pct": 71.8,
+    "ua_similarity_pct": 100.0,
+    "endpoint_similarity_pct": 100.0,
+    "failure_behavior_pct": 95.7,
+    "reasons": [
+      "\u2713 250 distributed IPs systematically target 147 accounts (61.0% target reuse)",
+      "\u2713 95.7% authentication failure rate across 1,794 total attempts",
+      "\u2713 71.8% timing regularity indicating automated pacing / bot scheduling",
+      "\u2713 100.0% client signature uniformity using canonical 'HeadlessChrome-121'",
+      "\u2713 100.0% endpoint focus targeting '/login'",
+      "\u2713 Low-and-slow profile: average 7.2 attempts/IP successfully evades standard single-IP threshold alarms"
+    ],
+    "primary_user_agent": "HeadlessChrome-121",
+    "primary_endpoint": "/login",
+    "top_origin_countries": "UA, ID, VN"
+  },
+  {
+    "campaign_id": "CLUSTER_00",
+    "risk_score": 43.7,
+    "classification": "LOW_RISK",
+    "ip_count": 66,
+    "total_events": 66,
+    "unique_target_accounts": 59,
+    "avg_attempts_per_ip": 1.0,
+    "account_overlap_pct": 5.6,
+    "timing_similarity_pct": 50.0,
+    "ua_similarity_pct": 30.3,
+    "endpoint_similarity_pct": 50.0,
+    "failure_behavior_pct": 100.0,
+    "reasons": [
+      "\u2713 66 distributed IPs systematically target 59 accounts (5.6% target reuse)",
+      "\u2713 100.0% authentication failure rate across 66 total attempts",
+      "\u2713 50.0% timing regularity indicating automated pacing / bot scheduling",
+      "\u2713 30.3% client signature uniformity using canonical 'Chrome-122'",
+      "\u2713 50.0% endpoint focus targeting '/login'",
+      "\u2713 Low-and-slow profile: average 1.0 attempts/IP successfully evades standard single-IP threshold alarms"
+    ],
+    "primary_user_agent": "Chrome-122",
+    "primary_endpoint": "/login",
+    "top_origin_countries": "IN, US, FR"
+  }
+]

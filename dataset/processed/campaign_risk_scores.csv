@@ -1,0 +1,19 @@
+campaign_id,risk_score,classification,ip_count,total_events,unique_target_accounts,avg_attempts_per_ip,account_overlap_pct,timing_similarity_pct,ua_similarity_pct,endpoint_similarity_pct,failure_behavior_pct,primary_user_agent,primary_endpoint,top_origin_countries,reasons_joined
+CAMPAIGN_02,93.1,CREDENTIAL_STUFFING,800,7979,400,9.97,99.7,69.6,100.0,100.0,96.3,Chrome-120,/api/v1/auth/login,"RU, DE, CN","✓ 800 distributed IPs systematically target 400 accounts (99.7% target reuse) 
+✓ 96.3% authentication failure rate across 7,979 total attempts 
+✓ 69.6% timing regularity indicating automated pacing / bot scheduling 
+✓ 100.0% client signature uniformity using canonical 'Chrome-120' 
+✓ 100.0% endpoint focus targeting '/api/v1/auth/login' 
+✓ Low-and-slow profile: average 10.0 attempts/IP successfully evades standard single-IP threshold alarms"
+CAMPAIGN_01,81.8,CREDENTIAL_STUFFING,250,1794,147,7.18,61.0,71.8,100.0,100.0,95.7,HeadlessChrome-121,/login,"UA, ID, VN","✓ 250 distributed IPs systematically target 147 accounts (61.0% target reuse) 
+✓ 95.7% authentication failure rate across 1,794 total attempts 
+✓ 71.8% timing regularity indicating automated pacing / bot scheduling 
+✓ 100.0% client signature uniformity using canonical 'HeadlessChrome-121' 
+✓ 100.0% endpoint focus targeting '/login' 
+✓ Low-and-slow profile: average 7.2 attempts/IP successfully evades standard single-IP threshold alarms"
+CLUSTER_00,43.7,LOW_RISK,66,66,59,1.0,5.6,50.0,30.3,50.0,100.0,Chrome-122,/login,"IN, US, FR","✓ 66 distributed IPs systematically target 59 accounts (5.6% target reuse) 
+✓ 100.0% authentication failure rate across 66 total attempts 
+✓ 50.0% timing regularity indicating automated pacing / bot scheduling 
+✓ 30.3% client signature uniformity using canonical 'Chrome-122' 
+✓ 50.0% endpoint focus targeting '/login' 
+✓ Low-and-slow profile: average 1.0 attempts/IP successfully evades standard single-IP threshold alarms"

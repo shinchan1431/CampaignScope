@@ -1,0 +1,4 @@
+campaign_id,ip_count,total_events,unique_target_accounts,avg_attempts_per_ip,mean_failure_ratio,mean_username_diversity,mean_timing_regularity,primary_user_agent,primary_endpoint,top_origin_countries
+CAMPAIGN_02,800,7979,400,9.97,0.9626,1.0,0.6964,Chrome-120,/api/v1/auth/login,"RU, DE, CN"
+CAMPAIGN_01,250,1794,147,7.18,0.9569,1.0,0.718,HeadlessChrome-121,/login,"UA, ID, VN"
+CLUSTER_00,66,66,59,1.0,1.0,1.0,0.5,Chrome-122,/login,"IN, US, FR"

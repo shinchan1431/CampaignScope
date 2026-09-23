@@ -1,0 +1,1670 @@
+{
+  "CAMPAIGN_02": {
+    "campaign_id": "CAMPAIGN_02",
+    "metrics": {
+      "risk_score": 93.1,
+      "classification": "CREDENTIAL_STUFFING",
+      "ip_count": 800,
+      "total_events": 7979,
+      "unique_target_accounts": 400,
+      "avg_attempts_per_ip": 9.97,
+      "primary_user_agent": "Chrome-120",
+      "primary_endpoint": "/api/v1/auth/login",
+      "top_origin_countries": "RU, DE, CN"
+    },
+    "reasons": [
+      "\u2713 800 distributed IPs systematically target 400 accounts (99.7% target reuse)",
+      "\u2713 96.3% authentication failure rate across 7,979 total attempts",
+      "\u2713 69.6% timing regularity indicating automated pacing / bot scheduling",
+      "\u2713 100.0% client signature uniformity using canonical 'Chrome-120'",
+      "\u2713 100.0% endpoint focus targeting '/api/v1/auth/login'",
+      "\u2713 Low-and-slow profile: average 10.0 attempts/IP successfully evades standard single-IP threshold alarms"
+    ],
+    "timeline": {
+      "started": "08:54",
+      "peak": "10:30",
+      "duration": "4h 04m",
+      "hourly_series": [
+        {
+          "time": "08:30",
+          "attempts": 30
+        },
+        {
+          "time": "09:00",
+          "attempts": 603
+        },
+        {
+          "time": "09:30",
+          "attempts": 1211
+        },
+        {
+          "time": "10:00",
+          "attempts": 1471
+        },
+        {
+          "time": "10:30",
+          "attempts": 1573
+        },
+        {
+          "time": "11:00",
+          "attempts": 1520
+        },
+        {
+          "time": "11:30",
+          "attempts": 1125
+        },
+        {
+          "time": "12:00",
+          "attempts": 389
+        },
+        {
+          "time": "12:30",
+          "attempts": 57
+        }
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "id": "CAMPAIGN_02",
+          "label": "Campaign CAMPAIGN_02",
+          "type": "campaign",
+          "risk_score": 93.1,
+          "size": 35,
+          "color": "#FF4B4B"
+        },
+        {
+          "id": "ep::/api/v1/auth/login",
+          "label": "/api/v1/auth/login",
+          "type": "endpoint",
+          "size": 22,
+          "color": "#00CC96"
+        },
+        {
+          "id": "ua::Chrome-120",
+          "label": "Chrome-120",
+          "type": "user_agent",
+          "size": 22,
+          "color": "#AB63FA"
+        },
+        {
+          "id": "103.95.136.9",
+          "label": "103.95.136.9",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 0.9286,
+          "country": "VN",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "103.197.207.148",
+          "label": "103.197.207.148",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 0.9286,
+          "country": "UA",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "103.93.59.26",
+          "label": "103.93.59.26",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 1.0,
+          "country": "VN",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "103.104.161.119",
+          "label": "103.104.161.119",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 0.9286,
+          "country": "CN",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "103.102.247.116",
+          "label": "103.102.247.116",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 0.9286,
+          "country": "RO",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "103.190.100.122",
+          "label": "103.190.100.122",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 1.0,
+          "country": "US",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "103.93.112.149",
+          "label": "103.93.112.149",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 1.0,
+          "country": "VN",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "103.171.136.253",
+          "label": "103.171.136.253",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 1.0,
+          "country": "VN",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "103.169.144.132",
+          "label": "103.169.144.132",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 0.8571,
+          "country": "CN",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "103.94.202.221",
+          "label": "103.94.202.221",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 1.0,
+          "country": "DE",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "103.187.152.111",
+          "label": "103.187.152.111",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 0.8571,
+          "country": "IN",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "103.123.239.91",
+          "label": "103.123.239.91",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 0.9286,
+          "country": "VN",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "103.123.13.34",
+          "label": "103.123.13.34",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 1.0,
+          "country": "BR",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "103.72.121.162",
+          "label": "103.72.121.162",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 1.0,
+          "country": "RU",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "103.72.141.41",
+          "label": "103.72.141.41",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 1.0,
+          "country": "ID",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "103.78.129.175",
+          "label": "103.78.129.175",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 1.0,
+          "country": "RU",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "103.78.206.26",
+          "label": "103.78.206.26",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 1.0,
+          "country": "VN",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "103.79.134.116",
+          "label": "103.79.134.116",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 1.0,
+          "country": "IN",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "103.80.199.16",
+          "label": "103.80.199.16",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 0.9286,
+          "country": "BR",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "103.113.210.183",
+          "label": "103.113.210.183",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 1.0,
+          "country": "RU",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "103.115.220.134",
+          "label": "103.115.220.134",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 1.0,
+          "country": "NG",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "103.115.62.159",
+          "label": "103.115.62.159",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 1.0,
+          "country": "ID",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "103.67.1.99",
+          "label": "103.67.1.99",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 1.0,
+          "country": "NG",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "103.63.157.15",
+          "label": "103.63.157.15",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 1.0,
+          "country": "RO",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "103.161.101.161",
+          "label": "103.161.101.161",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 0.9286,
+          "country": "CN",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "103.245.242.240",
+          "label": "103.245.242.240",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 1.0,
+          "country": "NG",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "103.243.147.230",
+          "label": "103.243.147.230",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 1.0,
+          "country": "DE",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "103.242.173.94",
+          "label": "103.242.173.94",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 1.0,
+          "country": "ID",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "103.243.122.128",
+          "label": "103.243.122.128",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 1.0,
+          "country": "IN",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "103.175.94.73",
+          "label": "103.175.94.73",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 1.0,
+          "country": "IN",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "103.24.87.202",
+          "label": "103.24.87.202",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 1.0,
+          "country": "RO",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "103.40.55.207",
+          "label": "103.40.55.207",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 1.0,
+          "country": "BR",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "103.47.113.12",
+          "label": "103.47.113.12",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 1.0,
+          "country": "CN",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "103.213.42.184",
+          "label": "103.213.42.184",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 1.0,
+          "country": "RO",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "103.186.181.231",
+          "label": "103.186.181.231",
+          "type": "ip",
+          "attempts": 14,
+          "failure_ratio": 1.0,
+          "country": "CN",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "acc::wendy.target252@cloudsec.org",
+          "label": "wendy.target252@cloudsec.org",
+          "type": "account",
+          "hit_count": 34,
+          "size": 18,
+          "color": "#19D3F3"
+        },
+        {
+          "id": "acc::rachel.target224@techhub.io",
+          "label": "rachel.target224@techhub.io",
+          "type": "account",
+          "hit_count": 33,
+          "size": 18,
+          "color": "#19D3F3"
+        },
+        {
+          "id": "acc::liam.target38@cloudsec.org",
+          "label": "liam.target38@cloudsec.org",
+          "type": "account",
+          "hit_count": 33,
+          "size": 18,
+          "color": "#19D3F3"
+        },
+        {
+          "id": "acc::aravind.target25@example.com",
+          "label": "aravind.target25@example.com",
+          "type": "account",
+          "hit_count": 31,
+          "size": 18,
+          "color": "#19D3F3"
+        },
+        {
+          "id": "acc::ananya.target285@techhub.io",
+          "label": "ananya.target285@techhub.io",
+          "type": "account",
+          "hit_count": 30,
+          "size": 18,
+          "color": "#19D3F3"
+        },
+        {
+          "id": "acc::charlie.target204@cloudsec.org",
+          "label": "charlie.target204@cloudsec.org",
+          "type": "account",
+          "hit_count": 30,
+          "size": 18,
+          "color": "#19D3F3"
+        },
+        {
+          "id": "acc::sophia.target371@mailservice.net",
+          "label": "sophia.target371@mailservice.net",
+          "type": "account",
+          "hit_count": 30,
+          "size": 18,
+          "color": "#19D3F3"
+        },
+        {
+          "id": "acc::peter.target173@mailservice.net",
+          "label": "peter.target173@mailservice.net",
+          "type": "account",
+          "hit_count": 30,
+          "size": 18,
+          "color": "#19D3F3"
+        },
+        {
+          "id": "acc::yasmin.target6@techhub.io",
+          "label": "yasmin.target6@techhub.io",
+          "type": "account",
+          "hit_count": 29,
+          "size": 18,
+          "color": "#19D3F3"
+        },
+        {
+          "id": "acc::wendy.target256@mailservice.net",
+          "label": "wendy.target256@mailservice.net",
+          "type": "account",
+          "hit_count": 29,
+          "size": 18,
+          "color": "#19D3F3"
+        },
+        {
+          "id": "acc::xander.target70@example.com",
+          "label": "xander.target70@example.com",
+          "type": "account",
+          "hit_count": 29,
+          "size": 18,
+          "color": "#19D3F3"
+        },
+        {
+          "id": "acc::sam.target321@cloudsec.org",
+          "label": "sam.target321@cloudsec.org",
+          "type": "account",
+          "hit_count": 29,
+          "size": 18,
+          "color": "#19D3F3"
+        },
+        {
+          "id": "acc::george.target156@mailservice.net",
+          "label": "george.target156@mailservice.net",
+          "type": "account",
+          "hit_count": 29,
+          "size": 18,
+          "color": "#19D3F3"
+        },
+        {
+          "id": "acc::james.target350@example.com",
+          "label": "james.target350@example.com",
+          "type": "account",
+          "hit_count": 29,
+          "size": 18,
+          "color": "#19D3F3"
+        },
+        {
+          "id": "acc::kevin.target32@cloudsec.org",
+          "label": "kevin.target32@cloudsec.org",
+          "type": "account",
+          "hit_count": 28,
+          "size": 18,
+          "color": "#19D3F3"
+        }
+      ],
+      "links": [
+        {
+          "source": "CAMPAIGN_02",
+          "target": "ep::/api/v1/auth/login",
+          "relation": "accesses"
+        },
+        {
+          "source": "CAMPAIGN_02",
+          "target": "ua::Chrome-120",
+          "relation": "uses"
+        },
+        {
+          "source": "103.95.136.9",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "103.197.207.148",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "103.93.59.26",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "103.104.161.119",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "103.102.247.116",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "103.190.100.122",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "103.93.112.149",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "103.171.136.253",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "103.169.144.132",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "103.94.202.221",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "103.187.152.111",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "103.123.239.91",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "103.123.13.34",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "103.72.121.162",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "103.72.141.41",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "103.78.129.175",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "103.78.206.26",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "103.79.134.116",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "103.80.199.16",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "103.113.210.183",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "103.115.220.134",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "103.115.62.159",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "103.67.1.99",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "103.63.157.15",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "103.161.101.161",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "103.245.242.240",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "103.243.147.230",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "103.242.173.94",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "103.243.122.128",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "103.175.94.73",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "103.24.87.202",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "103.40.55.207",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "103.47.113.12",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "103.213.42.184",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "103.186.181.231",
+          "target": "CAMPAIGN_02",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "CAMPAIGN_02",
+          "target": "acc::wendy.target252@cloudsec.org",
+          "relation": "targets",
+          "hits": 34
+        },
+        {
+          "source": "CAMPAIGN_02",
+          "target": "acc::rachel.target224@techhub.io",
+          "relation": "targets",
+          "hits": 33
+        },
+        {
+          "source": "CAMPAIGN_02",
+          "target": "acc::liam.target38@cloudsec.org",
+          "relation": "targets",
+          "hits": 33
+        },
+        {
+          "source": "CAMPAIGN_02",
+          "target": "acc::aravind.target25@example.com",
+          "relation": "targets",
+          "hits": 31
+        },
+        {
+          "source": "CAMPAIGN_02",
+          "target": "acc::ananya.target285@techhub.io",
+          "relation": "targets",
+          "hits": 30
+        },
+        {
+          "source": "CAMPAIGN_02",
+          "target": "acc::charlie.target204@cloudsec.org",
+          "relation": "targets",
+          "hits": 30
+        },
+        {
+          "source": "CAMPAIGN_02",
+          "target": "acc::sophia.target371@mailservice.net",
+          "relation": "targets",
+          "hits": 30
+        },
+        {
+          "source": "CAMPAIGN_02",
+          "target": "acc::peter.target173@mailservice.net",
+          "relation": "targets",
+          "hits": 30
+        },
+        {
+          "source": "CAMPAIGN_02",
+          "target": "acc::yasmin.target6@techhub.io",
+          "relation": "targets",
+          "hits": 29
+        },
+        {
+          "source": "CAMPAIGN_02",
+          "target": "acc::wendy.target256@mailservice.net",
+          "relation": "targets",
+          "hits": 29
+        },
+        {
+          "source": "CAMPAIGN_02",
+          "target": "acc::xander.target70@example.com",
+          "relation": "targets",
+          "hits": 29
+        },
+        {
+          "source": "CAMPAIGN_02",
+          "target": "acc::sam.target321@cloudsec.org",
+          "relation": "targets",
+          "hits": 29
+        },
+        {
+          "source": "CAMPAIGN_02",
+          "target": "acc::george.target156@mailservice.net",
+          "relation": "targets",
+          "hits": 29
+        },
+        {
+          "source": "CAMPAIGN_02",
+          "target": "acc::james.target350@example.com",
+          "relation": "targets",
+          "hits": 29
+        },
+        {
+          "source": "CAMPAIGN_02",
+          "target": "acc::kevin.target32@cloudsec.org",
+          "relation": "targets",
+          "hits": 28
+        }
+      ]
+    }
+  },
+  "CAMPAIGN_01": {
+    "campaign_id": "CAMPAIGN_01",
+    "metrics": {
+      "risk_score": 81.8,
+      "classification": "CREDENTIAL_STUFFING",
+      "ip_count": 250,
+      "total_events": 1794,
+      "unique_target_accounts": 147,
+      "avg_attempts_per_ip": 7.18,
+      "primary_user_agent": "HeadlessChrome-121",
+      "primary_endpoint": "/login",
+      "top_origin_countries": "UA, ID, VN"
+    },
+    "reasons": [
+      "\u2713 250 distributed IPs systematically target 147 accounts (61.0% target reuse)",
+      "\u2713 95.7% authentication failure rate across 1,794 total attempts",
+      "\u2713 71.8% timing regularity indicating automated pacing / bot scheduling",
+      "\u2713 100.0% client signature uniformity using canonical 'HeadlessChrome-121'",
+      "\u2713 100.0% endpoint focus targeting '/login'",
+      "\u2713 Low-and-slow profile: average 7.2 attempts/IP successfully evades standard single-IP threshold alarms"
+    ],
+    "timeline": {
+      "started": "09:48",
+      "peak": "11:00",
+      "duration": "2h 52m",
+      "hourly_series": [
+        {
+          "time": "09:30",
+          "attempts": 41
+        },
+        {
+          "time": "10:00",
+          "attempts": 305
+        },
+        {
+          "time": "10:30",
+          "attempts": 443
+        },
+        {
+          "time": "11:00",
+          "attempts": 460
+        },
+        {
+          "time": "11:30",
+          "attempts": 413
+        },
+        {
+          "time": "12:00",
+          "attempts": 126
+        },
+        {
+          "time": "12:30",
+          "attempts": 6
+        }
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "id": "CAMPAIGN_01",
+          "label": "Campaign CAMPAIGN_01",
+          "type": "campaign",
+          "risk_score": 81.8,
+          "size": 35,
+          "color": "#FF4B4B"
+        },
+        {
+          "id": "ep::/login",
+          "label": "/login",
+          "type": "endpoint",
+          "size": 22,
+          "color": "#00CC96"
+        },
+        {
+          "id": "ua::HeadlessChrome-121",
+          "label": "HeadlessChrome-121",
+          "type": "user_agent",
+          "size": 22,
+          "color": "#AB63FA"
+        },
+        {
+          "id": "185.102.224.81",
+          "label": "185.102.224.81",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 1.0,
+          "country": "DE",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "185.111.13.75",
+          "label": "185.111.13.75",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 0.9,
+          "country": "US",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "185.117.75.142",
+          "label": "185.117.75.142",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 0.9,
+          "country": "IN",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "185.122.92.122",
+          "label": "185.122.92.122",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 1.0,
+          "country": "UA",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "185.114.48.53",
+          "label": "185.114.48.53",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 1.0,
+          "country": "IN",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "185.146.249.18",
+          "label": "185.146.249.18",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 1.0,
+          "country": "NG",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "185.135.125.129",
+          "label": "185.135.125.129",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 1.0,
+          "country": "RO",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "185.137.235.20",
+          "label": "185.137.235.20",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 1.0,
+          "country": "RU",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "185.133.189.166",
+          "label": "185.133.189.166",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 1.0,
+          "country": "RU",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "185.126.45.143",
+          "label": "185.126.45.143",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 0.9,
+          "country": "UA",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "185.145.233.177",
+          "label": "185.145.233.177",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 1.0,
+          "country": "VN",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "185.185.63.8",
+          "label": "185.185.63.8",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 0.8,
+          "country": "RU",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "185.190.38.205",
+          "label": "185.190.38.205",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 0.9,
+          "country": "DE",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "185.190.179.136",
+          "label": "185.190.179.136",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 1.0,
+          "country": "UA",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "185.190.155.244",
+          "label": "185.190.155.244",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 1.0,
+          "country": "NG",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "185.208.14.213",
+          "label": "185.208.14.213",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 1.0,
+          "country": "ID",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "185.197.210.31",
+          "label": "185.197.210.31",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 1.0,
+          "country": "IN",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "185.193.95.46",
+          "label": "185.193.95.46",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 1.0,
+          "country": "VN",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "185.208.80.176",
+          "label": "185.208.80.176",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 1.0,
+          "country": "RO",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "185.163.190.119",
+          "label": "185.163.190.119",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 1.0,
+          "country": "BR",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "185.163.158.177",
+          "label": "185.163.158.177",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 1.0,
+          "country": "VN",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "185.153.35.127",
+          "label": "185.153.35.127",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 0.9,
+          "country": "ID",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "185.203.219.110",
+          "label": "185.203.219.110",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 1.0,
+          "country": "CN",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "185.31.17.78",
+          "label": "185.31.17.78",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 0.9,
+          "country": "CN",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "185.234.182.178",
+          "label": "185.234.182.178",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 0.9,
+          "country": "IN",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "185.215.93.181",
+          "label": "185.215.93.181",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 1.0,
+          "country": "BR",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "185.49.210.34",
+          "label": "185.49.210.34",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 1.0,
+          "country": "DE",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "185.53.230.203",
+          "label": "185.53.230.203",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 1.0,
+          "country": "UA",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "185.51.168.171",
+          "label": "185.51.168.171",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 1.0,
+          "country": "RU",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "185.51.120.29",
+          "label": "185.51.120.29",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 0.9,
+          "country": "CN",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "185.56.102.103",
+          "label": "185.56.102.103",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 1.0,
+          "country": "UA",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "185.56.177.59",
+          "label": "185.56.177.59",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 0.9,
+          "country": "US",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "185.75.184.50",
+          "label": "185.75.184.50",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 1.0,
+          "country": "US",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "185.86.42.149",
+          "label": "185.86.42.149",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 0.9,
+          "country": "UA",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "185.96.245.164",
+          "label": "185.96.245.164",
+          "type": "ip",
+          "attempts": 10,
+          "failure_ratio": 0.9,
+          "country": "BR",
+          "size": 15,
+          "color": "#EF553B"
+        },
+        {
+          "id": "acc::vip_liam_73@example.com",
+          "label": "vip_liam_73@example.com",
+          "type": "account",
+          "hit_count": 25,
+          "size": 18,
+          "color": "#19D3F3"
+        },
+        {
+          "id": "acc::vip_grace_67@example.com",
+          "label": "vip_grace_67@example.com",
+          "type": "account",
+          "hit_count": 20,
+          "size": 18,
+          "color": "#19D3F3"
+        },
+        {
+          "id": "acc::vip_sam_9@example.com",
+          "label": "vip_sam_9@example.com",
+          "type": "account",
+          "hit_count": 20,
+          "size": 18,
+          "color": "#19D3F3"
+        },
+        {
+          "id": "acc::vip_ian_126@example.com",
+          "label": "vip_ian_126@example.com",
+          "type": "account",
+          "hit_count": 19,
+          "size": 18,
+          "color": "#19D3F3"
+        },
+        {
+          "id": "acc::vip_rachel_21@example.com",
+          "label": "vip_rachel_21@example.com",
+          "type": "account",
+          "hit_count": 19,
+          "size": 18,
+          "color": "#19D3F3"
+        },
+        {
+          "id": "acc::vip_felix_56@example.com",
+          "label": "vip_felix_56@example.com",
+          "type": "account",
+          "hit_count": 19,
+          "size": 18,
+          "color": "#19D3F3"
+        },
+        {
+          "id": "acc::vip_sneha_107@example.com",
+          "label": "vip_sneha_107@example.com",
+          "type": "account",
+          "hit_count": 18,
+          "size": 18,
+          "color": "#19D3F3"
+        },
+        {
+          "id": "acc::vip_ursula_65@example.com",
+          "label": "vip_ursula_65@example.com",
+          "type": "account",
+          "hit_count": 18,
+          "size": 18,
+          "color": "#19D3F3"
+        },
+        {
+          "id": "acc::vip_henry_66@example.com",
+          "label": "vip_henry_66@example.com",
+          "type": "account",
+          "hit_count": 18,
+          "size": 18,
+          "color": "#19D3F3"
+        },
+        {
+          "id": "acc::vip_isabella_72@example.com",
+          "label": "vip_isabella_72@example.com",
+          "type": "account",
+          "hit_count": 17,
+          "size": 18,
+          "color": "#19D3F3"
+        },
+        {
+          "id": "acc::vip_bob_41@example.com",
+          "label": "vip_bob_41@example.com",
+          "type": "account",
+          "hit_count": 17,
+          "size": 18,
+          "color": "#19D3F3"
+        },
+        {
+          "id": "acc::vip_oscar_103@example.com",
+          "label": "vip_oscar_103@example.com",
+          "type": "account",
+          "hit_count": 17,
+          "size": 18,
+          "color": "#19D3F3"
+        },
+        {
+          "id": "acc::vip_sneha_137@example.com",
+          "label": "vip_sneha_137@example.com",
+          "type": "account",
+          "hit_count": 17,
+          "size": 18,
+          "color": "#19D3F3"
+        },
+        {
+          "id": "acc::vip_priya_110@example.com",
+          "label": "vip_priya_110@example.com",
+          "type": "account",
+          "hit_count": 16,
+          "size": 18,
+          "color": "#19D3F3"
+        },
+        {
+          "id": "acc::vip_emma_96@example.com",
+          "label": "vip_emma_96@example.com",
+          "type": "account",
+          "hit_count": 16,
+          "size": 18,
+          "color": "#19D3F3"
+        }
+      ],
+      "links": [
+        {
+          "source": "CAMPAIGN_01",
+          "target": "ep::/login",
+          "relation": "accesses"
+        },
+        {
+          "source": "CAMPAIGN_01",
+          "target": "ua::HeadlessChrome-121",
+          "relation": "uses"
+        },
+        {
+          "source": "185.102.224.81",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "185.111.13.75",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "185.117.75.142",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "185.122.92.122",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "185.114.48.53",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "185.146.249.18",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "185.135.125.129",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "185.137.235.20",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "185.133.189.166",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "185.126.45.143",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "185.145.233.177",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "185.185.63.8",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "185.190.38.205",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "185.190.179.136",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "185.190.155.244",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "185.208.14.213",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "185.197.210.31",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "185.193.95.46",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "185.208.80.176",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "185.163.190.119",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "185.163.158.177",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "185.153.35.127",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "185.203.219.110",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "185.31.17.78",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "185.234.182.178",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "185.215.93.181",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "185.49.210.34",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "185.53.230.203",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "185.51.168.171",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "185.51.120.29",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "185.56.102.103",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "185.56.177.59",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "185.75.184.50",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "185.86.42.149",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "185.96.245.164",
+          "target": "CAMPAIGN_01",
+          "relation": "belongs_to"
+        },
+        {
+          "source": "CAMPAIGN_01",
+          "target": "acc::vip_liam_73@example.com",
+          "relation": "targets",
+          "hits": 25
+        },
+        {
+          "source": "CAMPAIGN_01",
+          "target": "acc::vip_grace_67@example.com",
+          "relation": "targets",
+          "hits": 20
+        },
+        {
+          "source": "CAMPAIGN_01",
+          "target": "acc::vip_sam_9@example.com",
+          "relation": "targets",
+          "hits": 20
+        },
+        {
+          "source": "CAMPAIGN_01",
+          "target": "acc::vip_ian_126@example.com",
+          "relation": "targets",
+          "hits": 19
+        },
+        {
+          "source": "CAMPAIGN_01",
+          "target": "acc::vip_rachel_21@example.com",
+          "relation": "targets",
+          "hits": 19
+        },
+        {
+          "source": "CAMPAIGN_01",
+          "target": "acc::vip_felix_56@example.com",
+          "relation": "targets",
+          "hits": 19
+        },
+        {
+          "source": "CAMPAIGN_01",
+          "target": "acc::vip_sneha_107@example.com",
+          "relation": "targets",
+          "hits": 18
+        },
+        {
+          "source": "CAMPAIGN_01",
+          "target": "acc::vip_ursula_65@example.com",
+          "relation": "targets",
+          "hits": 18
+        },
+        {
+          "source": "CAMPAIGN_01",
+          "target": "acc::vip_henry_66@example.com",
+          "relation": "targets",
+          "hits": 18
+        },
+        {
+          "source": "CAMPAIGN_01",
+          "target": "acc::vip_isabella_72@example.com",
+          "relation": "targets",
+          "hits": 17
+        },
+        {
+          "source": "CAMPAIGN_01",
+          "target": "acc::vip_bob_41@example.com",
+          "relation": "targets",
+          "hits": 17
+        },
+        {
+          "source": "CAMPAIGN_01",
+          "target": "acc::vip_oscar_103@example.com",
+          "relation": "targets",
+          "hits": 17
+        },
+        {
+          "source": "CAMPAIGN_01",
+          "target": "acc::vip_sneha_137@example.com",
+          "relation": "targets",
+          "hits": 17
+        },
+        {
+          "source": "CAMPAIGN_01",
+          "target": "acc::vip_priya_110@example.com",
+          "relation": "targets",
+          "hits": 16
+        },
+        {
+          "source": "CAMPAIGN_01",
+          "target": "acc::vip_emma_96@example.com",
+          "relation": "targets",
+          "hits": 16
+        }
+      ]
+    }
+  }
+}
