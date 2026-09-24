@@ -1,9 +1,23 @@
 from pathlib import Path
+import sys
 
 import pandas as pd
 import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
+
+# Allow dashboard to import CampaignScope pipeline modules
+ROOT = Path(__file__).resolve().parents[1]
+
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from src.ingestion.cleaner import DataCleaner
+from src.features.fingerprint import FeatureExtractor
+from src.correlation.similarity import CrossIPCorrelator
+from src.clustering.campaign_detector import CampaignClusterer
+from src.risk_engine.scorer import CampaignRiskEngine
+from src.graph.builder import CampaignGraphBuilder
 
 
 # ============================================================
@@ -130,21 +144,446 @@ st.sidebar.markdown(
     """
 ### Detection Pipeline
 
-Authentication Logs  
-↓  
-Feature Extraction  
-↓  
-Cross-IP Correlation  
-↓  
-Campaign Clustering  
-↓  
-Risk Assessment  
-↓  
+Authentication Logs   
+↓   
+Feature Extraction   
+↓   
+Cross-IP Correlation   
+↓   
+Campaign Clustering   
+↓   
+Risk Assessment   
+↓   
 Investigation
 """
 )
 
 st.sidebar.divider()
+
+
+# ============================================================
+# AUTHENTICATION LOG UPLOAD
+# ============================================================
+
+REQUIRED_LOG_COLUMNS = [
+    "timestamp",
+    "ip_address",
+    "username",
+    "endpoint",
+    "user_agent",
+    "status_code",
+]
+
+
+def validate_authentication_log(df):
+    """
+    Validate whether an uploaded CSV contains the
+    minimum authentication-log schema required by CampaignScope.
+    """
+
+    missing_columns = [
+        column
+        for column in REQUIRED_LOG_COLUMNS
+        if column not in df.columns
+    ]
+
+    if missing_columns:
+        return False, missing_columns
+
+    return True, []
+
+
+# ============================================================
+# LIVE UPLOADED LOG ANALYSIS
+# ============================================================
+
+def analyze_uploaded_logs(uploaded_df):
+    """
+    Runs the complete CampaignScope detection pipeline
+    directly on an uploaded authentication-log DataFrame.
+    """
+
+    df = uploaded_df.copy()
+
+    # --------------------------------------------------------
+    # Add optional fields expected by the CampaignScope engine
+    # --------------------------------------------------------
+
+    if "country" not in df.columns:
+        df["country"] = "XX"
+
+    if "response_time" not in df.columns:
+        df["response_time"] = 100
+
+    if "device_id" not in df.columns:
+        df["device_id"] = "unknown_device"
+
+    # --------------------------------------------------------
+    # Phase 1: Cleaning and normalization
+    # --------------------------------------------------------
+
+    cleaner = DataCleaner()
+
+    cleaned_df, cleaning_stats = cleaner.clean_dataframe(df)
+
+    if cleaned_df.empty:
+        raise ValueError(
+            "No valid authentication events remained after cleaning."
+        )
+
+    # --------------------------------------------------------
+    # Phase 2: IP behavioral fingerprints
+    # --------------------------------------------------------
+
+    extractor = FeatureExtractor()
+
+    feature_df = extractor.extract_features(cleaned_df)
+
+    if feature_df.empty:
+        raise ValueError(
+            "No IP behavioral fingerprints could be generated."
+        )
+
+    # --------------------------------------------------------
+    # Phase 3: Cross-IP correlation
+    # --------------------------------------------------------
+
+    correlator = CrossIPCorrelator(
+        min_composite_score=0.45
+    )
+
+    correlation_result = correlator.compute_correlations(
+        feature_df
+    )
+
+    correlation_edges = correlation_result.edges_df
+
+    # --------------------------------------------------------
+    # Phase 4: Campaign clustering
+    # --------------------------------------------------------
+
+    clusterer = CampaignClusterer()
+
+    cluster_result = clusterer.cluster_campaigns(
+        feature_df,
+        correlation_edges,
+    )
+
+    clustered_ips = cluster_result.clustered_ips_df
+    campaign_summaries = cluster_result.campaign_summaries_df
+
+    # --------------------------------------------------------
+    # Phase 5: Risk assessment
+    # --------------------------------------------------------
+
+    risk_engine = CampaignRiskEngine()
+
+    assessments = risk_engine.assess_all(
+        campaign_summaries,
+        clustered_ips,
+    )
+
+    risk_records = [
+        assessment.to_dict()
+        for assessment in assessments
+    ]
+
+    risk_scores = pd.DataFrame(risk_records)
+
+    if not risk_scores.empty:
+        risk_scores["reasons_joined"] = risk_scores[
+            "reasons"
+        ].apply(
+            lambda reasons: "\n".join(reasons)
+            if isinstance(reasons, list)
+            else str(reasons)
+        )
+
+    # --------------------------------------------------------
+    # Phase 6: Investigation graph
+    # --------------------------------------------------------
+
+    graph_builder = CampaignGraphBuilder(
+        clustered_ips_df=clustered_ips,
+        campaign_risk_df=risk_scores,
+        correlation_edges_df=correlation_edges,
+        cleaned_logs_df=cleaned_df,
+    )
+
+    graph_nodes = []
+
+    for node_id, attributes in graph_builder.G.nodes(
+        data=True
+    ):
+        graph_nodes.append(
+            {
+                "node_id": node_id,
+                **attributes,
+            }
+        )
+
+    graph_nodes_df = pd.DataFrame(graph_nodes)
+
+    graph_edges = []
+
+    for source, target, attributes in graph_builder.G.edges(
+        data=True
+    ):
+        graph_edges.append(
+            {
+                "source": source,
+                "target": target,
+                **attributes,
+            }
+        )
+
+    graph_edges_df = pd.DataFrame(graph_edges)
+
+    # --------------------------------------------------------
+    # Return complete live-analysis result
+    # --------------------------------------------------------
+
+    return {
+        "cleaned_logs": cleaned_df,
+        "cleaning_stats": cleaning_stats,
+        "features": feature_df,
+        "correlation_edges": correlation_edges,
+        "correlation_stats": correlation_result.stats,
+        "clustered_ips": clustered_ips,
+        "campaign_summaries": campaign_summaries,
+        "clustering_stats": cluster_result.stats,
+        "risk_scores": risk_scores,
+        "graph_nodes": graph_nodes_df,
+        "graph_edges": graph_edges_df,
+    }
+
+
+# ============================================================
+# UPLOAD HANDLER
+# ============================================================
+
+st.sidebar.subheader("Analyze Your Logs")
+
+uploaded_file = st.sidebar.file_uploader(
+    "Upload authentication logs",
+    type=["csv"],
+    help=(
+        "Upload a CSV containing authentication events. "
+        "Required columns: timestamp, ip_address, username, "
+        "endpoint, user_agent and status_code."
+    ),
+)
+
+uploaded_logs = None
+live_analysis = None
+
+
+if uploaded_file is not None:
+
+    try:
+
+        uploaded_logs = pd.read_csv(uploaded_file)
+
+        is_valid, missing_columns = validate_authentication_log(
+            uploaded_logs
+        )
+
+        if not is_valid:
+
+            st.sidebar.error(
+                "Invalid authentication log."
+            )
+
+            st.sidebar.write(
+                "Missing required columns:"
+            )
+
+            for column in missing_columns:
+                st.sidebar.write(
+                    f"- `{column}`"
+                )
+
+            uploaded_logs = None
+
+        else:
+
+            st.sidebar.success(
+                "Authentication log accepted."
+            )
+
+            with st.spinner(
+                "Running CampaignScope analysis..."
+            ):
+
+                try:
+
+                    live_analysis = analyze_uploaded_logs(
+                        uploaded_logs
+                    )
+
+                    st.sidebar.success(
+                        "CampaignScope analysis completed."
+                    )
+
+                except Exception as e:
+
+                    st.sidebar.error(
+                        "CampaignScope analysis failed."
+                    )
+
+                    st.exception(e)
+
+                    live_analysis = None
+
+    except Exception as e:
+
+        st.sidebar.error(
+            "Unable to read the uploaded CSV."
+        )
+
+        st.sidebar.exception(e)
+
+        uploaded_logs = None
+        live_analysis = None
+
+
+# ============================================================
+# UPLOADED LOG PREVIEW
+# ============================================================
+
+if uploaded_logs is not None:
+
+    st.header("Uploaded Authentication Logs")
+
+    upload_col1, upload_col2, upload_col3 = st.columns(3)
+
+    upload_col1.metric(
+        "Log Events",
+        f"{len(uploaded_logs):,}",
+    )
+
+    upload_col2.metric(
+        "Unique IPs",
+        f"{uploaded_logs['ip_address'].nunique():,}",
+    )
+
+    upload_col3.metric(
+        "Target Accounts",
+        f"{uploaded_logs['username'].nunique():,}",
+    )
+
+    st.subheader("Log Preview")
+
+    st.dataframe(
+        uploaded_logs.head(100),
+        width="stretch",
+        hide_index=True,
+    )
+
+
+# ============================================================
+# LIVE ANALYSIS SUMMARY
+# ============================================================
+
+if live_analysis is not None:
+
+    cleaning_stats = live_analysis[
+        "cleaning_stats"
+    ]
+
+    clustering_stats = live_analysis[
+        "clustering_stats"
+    ]
+
+    correlation_stats = live_analysis[
+        "correlation_stats"
+    ]
+
+    st.success(
+        "CampaignScope analysis completed successfully."
+    )
+
+    st.subheader("Live Analysis Summary")
+
+    live_col1, live_col2, live_col3, live_col4 = st.columns(4)
+
+    live_col1.metric(
+        "Clean Events",
+        f"{cleaning_stats['final_rows']:,}",
+    )
+
+    live_col2.metric(
+        "Analyzed IPs",
+        f"{clustering_stats['total_ips_analyzed']:,}",
+    )
+
+    live_col3.metric(
+        "Correlation Edges",
+        f"{correlation_stats['correlated_edges_retained']:,}",
+    )
+
+    live_col4.metric(
+        "Campaigns Detected",
+        f"{clustering_stats['campaigns_detected']:,}",
+    )
+
+
+# ============================================================
+# USE LIVE ANALYSIS WHEN A LOG IS UPLOADED
+# ============================================================
+
+if live_analysis is not None:
+
+    campaign_summaries = live_analysis[
+        "campaign_summaries"
+    ]
+
+    risk_scores = live_analysis[
+        "risk_scores"
+    ]
+
+    if risk_scores.empty:
+        risk_scores = pd.DataFrame(
+            columns=[
+                "campaign_id",
+                "risk_score",
+                "classification",
+                "ip_count",
+                "total_events",
+                "unique_target_accounts",
+                "avg_attempts_per_ip",
+                "account_overlap_pct",
+                "timing_similarity_pct",
+                "ua_similarity_pct",
+                "endpoint_similarity_pct",
+                "failure_behavior_pct",
+                "primary_user_agent",
+                "primary_endpoint",
+                "top_origin_countries",
+                "reasons_joined",
+            ]
+        )
+
+    clustered_ips = live_analysis[
+        "clustered_ips"
+    ]
+
+    correlation_edges = live_analysis[
+        "correlation_edges"
+    ]
+
+    graph_nodes = live_analysis[
+        "graph_nodes"
+    ]
+
+    graph_edges = live_analysis[
+        "graph_edges"
+    ]
+
+
+# ============================================================
+# CAMPAIGN SELECTION
+# ============================================================
 
 selected_campaign = st.sidebar.selectbox(
     "Select Campaign",
@@ -155,7 +594,6 @@ selected_campaign = st.sidebar.selectbox(
         .tolist()
     ),
 )
-
 
 # ============================================================
 # TOP METRICS
@@ -338,11 +776,11 @@ else:
 st.header("Risk Signals")
 
 signal_columns = [
-    "account_overlap",
-    "timing_similarity",
-    "ua_similarity",
-    "endpoint_similarity",
-    "failure_behavior",
+    "account_overlap_pct",
+    "timing_similarity_pct",
+    "ua_similarity_pct",
+    "endpoint_similarity_pct",
+    "failure_behavior_pct",
 ]
 
 available_signals = [
@@ -365,10 +803,6 @@ if available_signals:
                 for c in available_signals
             ],
         }
-    )
-
-    signal_data["Score"] = (
-        signal_data["Score"] * 100
     )
 
     fig_signals = px.bar(
