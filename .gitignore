@@ -14,3 +14,7 @@ derby.log
 
 # Generated reports/logs
 *.log
+
+# Excel temporary / source files
+*.xlsx
+~$*.xlsx
